@@ -1,0 +1,16 @@
+{
+  "name": "youth-legal-revolution",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Youth Legal Revolution website — legal awareness, constitutional literacy and public accountability.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "start": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}

@@ -1,20 +1,34 @@
-# Youth Legal Revolution — Website Update Package
+# Youth Legal Revolution website
 
-This package keeps the current homepage content and adds a dedicated **Organisational Overview** page containing YLR's foundational concept, vision, mission, objectives, constitutional basis, focus areas, operating method, values and proposed programmes.
+Responsive static website package with a homepage and a dedicated organisational overview page.
 
-## Files
-- `index.html` — homepage with the existing public-facing sections and the new link to `overview.html`.
-- `overview.html` — detailed organisational overview.
-- `styles.css` — shared responsive styling.
-- `script.js` — mobile navigation and legal-library search/filter interactions.
-- `assets/youth-legal-revolution-logo.jpg` and `.png` — supplied YLR logo asset.
+## Requirements
+- Node.js 20 or later (recommended)
+- npm
 
-## How to add to GitHub
-1. Download and extract this ZIP archive.
-2. Open the existing `Youth-Legal-Revolution` GitHub repository.
-3. Upload the files and `assets` folder to the repository root (not just the ZIP file).
-4. Commit the changes.
-5. Ensure Hostinger is connected to the same repository/branch and configured to publish the repository root. If your current deployment uses a different branch or build configuration, preserve those settings.
+## Run locally
+```bash
+npm install
+npm run dev
+```
+Vite prints a local preview URL, usually `http://localhost:5173`.
 
-## Important
-This is an additive prepared website package based on the publicly visible content of the current homepage and the organisational overview supplied for this update. It does not edit the live website or push changes to GitHub/Hostinger automatically. Before replacing repository files, retain a backup of the current version and compare any private edits or deployment-specific files. The current contact address is retained from the visible homepage and should be verified before launch. Proposed programmes are labelled as proposed rather than as already operational.
+## Build for deployment
+```bash
+npm run build
+npm run preview
+```
+The production site is generated in `dist/`.
+
+## GitHub / Hostinger
+Upload the project files to the repository root and commit. If Hostinger uses a Node.js build deployment, use `npm install` as the install step and `npm run build` as the build command; publish the `dist` directory if the deployment interface asks for an output directory. For a static-file deployment, `index.html`, `overview.html`, `styles.css`, `script.js` and `assets/` can be served directly from the repository root.
+
+## Included
+- `index.html`: homepage, focus areas, resource library, updates and get-involved section.
+- `overview.html`: organisational overview with vision, mission, objectives, constitutional foundation, focus areas, methodology, ethics and proposed programmes.
+- `styles.css`: responsive shared styles.
+- `script.js`: legal library search and category filters.
+- `assets/`: supplied Youth Legal Revolution logo in JPG and PNG formats.
+- `package.json`: development, build and preview scripts powered by Vite.
+
+The contact email displayed in the homepage should be verified before launch. Proposed programmes are labelled as proposed, not already operational. Legal information is educational and should be verified against current official sources.
