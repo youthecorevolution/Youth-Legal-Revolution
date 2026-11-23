@@ -1,0 +1,23 @@
+name: Build website
+on:
+  push:
+    branches: [main, site/seo-admin-rebuild]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+      - run: node scripts/runtime-smoke.mjs
+      - name: Confirm production files
+        run: test -f dist/index.html && test -f dist/overview.html && test -f dist/robots.txt && test -f dist/sitemap.xml && test -f dist/youth-legal-revolution-logo.png
+
