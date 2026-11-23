@@ -1,0 +1,12 @@
+<%- include('partials/head',{title,description,canonical,schemaJson:null}) %>
+<%- include('partials/header') %>
+<main>
+  <section class="page-hero"><div class="page-hero-inner"><p class="eyebrow">Youth Legal Revolution · Learning hub</p><h1><%= heading %></h1><p class="lede"><%= intro %></p></div></section>
+  <section class="section"><div class="section-inner content-list">
+    <% if (isReport) { %><div class="disclaimer"><strong>How to read these reviews:</strong> A reported legislative gap or implementation concern is an evidence-based analysis, not a finding of wrongdoing. Check the cited text, date, jurisdiction and sources.</div><% } %>
+    <% if (items.length) { items.forEach((item) => { %>
+      <article class="content-card"><p class="section-kicker"><%= isReport ? item.jurisdiction+' · '+item.law_title+' · '+item.provision_citation : item.author %></p><h2><a href="<%= itemPath+encodeURIComponent(item.slug) %>"><%= item.title %></a></h2><p><%= item.summary %></p><a class="card-link" href="<%= itemPath+encodeURIComponent(item.slug) %>">Read <%= isReport?'review':'article' %> ↗</a></article>
+    <% }); } else { %><div class="empty-state"><h2>More content is being prepared</h2><p>New articles and source-based reviews will appear here after editorial review.</p></div><% } %>
+  </div></section>
+</main>
+<%- include('partials/footer') %>

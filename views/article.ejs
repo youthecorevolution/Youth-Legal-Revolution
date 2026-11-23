@@ -1,0 +1,11 @@
+<%- include('partials/head',{title,description,canonical,schemaJson}) %>
+<%- include('partials/header') %>
+<main>
+  <section class="page-hero"><div class="page-hero-inner"><p class="eyebrow"><%= isReport?'Legislation and implementation review':'Legal explainer' %></p><h1><%= article.title %></h1><p class="lede"><%= article.summary %></p><p class="small-copy"><%= isReport ? article.jurisdiction+' · '+article.law_title+' · '+article.provision_citation : 'By '+article.author %></p></div></section>
+  <section class="section"><article class="section-inner article-body">
+    <% if (isReport) { %><div class="disclaimer"><strong>Editorial note:</strong> This is a research and public education analysis, not legal advice or an official finding. Conclusions are limited to the cited law and evidence available as of the review date.</div><h2>Analysis</h2><% } %>
+    <div class="prose"><%- bodyHtml %></div>
+    <% if (isReport) { %><section class="evidence-block"><h2>Evidence and limits</h2><p><%= evidence %></p><% if (sources && sources.length) { %><h2>Sources</h2><ul><% sources.forEach((source)=>{ %><li><a href="<%= source %>" target="_blank" rel="noopener noreferrer"><%= source %></a></li><% }); %></ul><% } %><p class="small-copy">Review date: <%= article.reviewed_at || 'Not stated' %>. If you identify a correction, contact the editorial team.</p></section><% } %>
+  </article></section>
+</main>
+<%- include('partials/footer') %>

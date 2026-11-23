@@ -1,0 +1,20 @@
+# Youth Legal Revolution
+
+> A youth-oriented legal awareness initiative promoting constitutional literacy, legal education, responsible civic participation and evidence-based public accountability across India.
+
+## Key pages
+- [Home](https://youthlegalrevolution.in/): Mission, focus areas and introductory legal resources.
+- [Organisational overview](https://youthlegalrevolution.in/overview.html): Vision, mission, objectives and operating approach.
+- [Articles](https://youthlegalrevolution.in/blog): Plain-language explainers and research notes.
+- [Legislation and implementation reviews](https://youthlegalrevolution.in/research): Source-based reviews identifying legal provisions, evidence, limitations and review dates.
+- [Contact](https://youthlegalrevolution.in/contact.html): Official email and social profiles.
+- [Terms of use](https://youthlegalrevolution.in/terms.html): Educational-use and legal-information terms.
+- [Privacy information](https://youthlegalrevolution.in/privacy.html): Visitor and editor privacy information.
+
+## Editorial limits
+The website provides general legal education, not individual legal advice or representation. A review's classification as a possible legislative gap, ambiguity, or implementation concern is an editorial assessment, not an official finding. Readers should consult cited primary sources and qualified professionals for individual matters.
+
+## Discovery
+- [Sitemap](https://youthlegalrevolution.in/sitemap.xml)
+- [Markdown home representation](https://youthlegalrevolution.in/index.md)
+- [Read-only MCP endpoint](https://youthlegalrevolution.in/mcp)

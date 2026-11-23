@@ -1,0 +1,27 @@
+<%- include('partials/head',{title,description:'Edit Youth Legal Revolution content.',canonical,schemaJson:null,noindex:true}) %>
+<main><section class="section admin-shell"><div class="admin-panel"><p class="section-kicker"><a href="/admin">← Dashboard</a></p><h1><%= title %></h1><% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+<% const isArticle=type==='article'; const action=edit?(isArticle?'/admin/articles/':'/admin/reviews/')+data.id:(isArticle?'/admin/articles':'/admin/reviews'); %>
+<form method="post" action="<%= action %>"><input type="hidden" name="_csrf" value="<%= csrf %>">
+  <label>Title<input name="title" required maxlength="180" value="<%= data.title||'' %>"></label>
+  <label>URL slug<input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="190" value="<%= data.slug||'' %>"><small>Use lowercase letters, numbers and hyphens.</small></label>
+  <label>Short summary<textarea name="summary" required minlength="20" maxlength="320" rows="3"><%= data.summary||'' %></textarea></label>
+  <% if (isArticle) { %>
+    <label>Author<input name="author" maxlength="120" value="<%= data.author||'Youth Legal Revolution' %>"></label>
+    <label>Article body (Markdown supported)<textarea name="body" required minlength="31" rows="18"><%= data.body||'' %></textarea></label>
+    <label>Publication status<select name="status"><option value="draft" <%= data.status==='draft'?'selected':'' %>>Draft</option><option value="published" <%= data.status==='published'?'selected':'' %>>Published</option></select></label>
+  <% } else { %>
+    <label>Jurisdiction<input name="jurisdiction" required maxlength="120" value="<%= data.jurisdiction||'India' %>"></label>
+    <label>Law / instrument title<input name="law_title" required maxlength="180" value="<%= data.law_title||'' %>"></label>
+    <label>Exact section, article, rule or clause<input name="provision_citation" required maxlength="180" value="<%= data.provision_citation||'' %>"></label>
+    <label>Review category<select name="review_type"><option value="legislative-gap" <%= data.review_type==='legislative-gap'?'selected':'' %>>Possible legislative gap</option><option value="possible-loophole" <%= data.review_type==='possible-loophole'?'selected':'' %>>Possible loophole or ambiguity</option><option value="implementation-performance" <%= data.review_type==='implementation-performance'?'selected':'' %>>Implementation / obligation performance</option></select></label>
+    <label>Analysis (Markdown supported)<textarea name="analysis" required minlength="31" rows="14"><%= data.analysis||'' %></textarea></label>
+    <label>Evidence, limitations and contrary context<textarea name="evidence" required minlength="11" rows="8"><%= data.evidence||'' %></textarea><small>State the date range, methodology, limits and any contrary evidence.</small></label>
+    <label>Primary source URLs (one per line)<textarea name="sources" required rows="5"><%= data.sources||'' %></textarea><small>Use official legislation, judgments, government records or other reliable sources where available.</small></label>
+    <label>Reviewer<input name="reviewed_by" maxlength="120" value="<%= data.reviewed_by||'' %>"></label>
+    <label>Review date<input type="date" name="reviewed_at" value="<%= data.reviewed_at ? new Date(data.reviewed_at).toISOString().slice(0,10) : '' %>"></label>
+    <label>Editorial status<select name="status"><option value="draft" <%= data.status==='draft'?'selected':'' %>>Draft</option><option value="under-review" <%= data.status==='under-review'?'selected':'' %>>Under review</option><option value="published" <%= data.status==='published'?'selected':'' %>>Published</option></select></label>
+    <div class="disclaimer">Do not present an allegation or inference as an established fact. Explain the legal test, cite the exact provision, provide evidence and clearly state the review's limitations.</div>
+  <% } %>
+  <div class="form-actions"><a class="btn-outline" href="/admin">Cancel</a><button class="btn-dark" type="submit">Save <%= isArticle?'article':'review' %></button></div>
+</form></div></section></main>
+<%- include('partials/footer') %>

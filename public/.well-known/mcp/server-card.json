@@ -1,0 +1,55 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "youth-legal-revolution",
+    "title": "Youth Legal Revolution public resources",
+    "version": "1.0.0"
+  },
+  "description": "Read-only discovery for published Youth Legal Revolution articles and evidence-based legislation reviews.",
+  "documentationUrl": "https://youthlegalrevolution.in/llms.txt",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "/mcp"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    }
+  },
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "tools": [
+    {
+      "name": "list_youth_legal_resources",
+      "title": "List published resources",
+      "description": "Lists published articles and legislation reviews. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_published_legal_reviews",
+      "title": "Search published reviews",
+      "description": "Searches published reviews by title, law, provision citation or summary. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          }
+        },
+        "required": ["query"],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "instructions": "Only published public resources are exposed. The website provides general legal education, not individual legal advice."
+}
